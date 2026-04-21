@@ -10,13 +10,22 @@ def test_mul_positivos():
     """Ejemplo: 3 * 4 debe dar 12."""
     assert mul(3, 4) == 12
 
-
-# --- TU TURNO ---
-# Agregá tests para los siguientes casos:
-#   - Multiplicar por cero
-#   - Multiplicar dos números negativos (resultado positivo)
-#   - Multiplicar un positivo y un negativo (resultado negativo)
-#   - Multiplicar por 1 (elemento neutro)
-#   - Multiplicar dos decimales (float)
-#
-# Pista: podés usar @pytest.mark.parametrize para probar varios casos a la vez.
+@pytest.mark.parametrize("a,b,esperado", [
+    # Multiplicación por cero
+    (5, 0, 0),
+    (0, 5, 0),
+    # Multiplicación de dos números negativos (resultado positivo)
+    (-3, -4, 12),
+    # Multiplicación de un positivo y otro negativo (resultado negativo)
+    (3, -4, -12),
+    (-3, 4, -12),
+    # Multiplicación por 1 (elemento neutro)
+    (5, 1, 5),
+    (1, 5, 5),
+    # Multiplicación de dos decimales (float)
+    (2.5, 4.0, 10.0),
+    (3.5, 2.5, 8.75),
+])
+def test_mul_casos(a, b, esperado):
+    """Tests para varios casos de multiplicación."""
+    assert mul(a, b) == esperado
