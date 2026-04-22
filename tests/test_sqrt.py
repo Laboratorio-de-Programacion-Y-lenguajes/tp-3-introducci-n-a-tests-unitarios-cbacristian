@@ -12,13 +12,17 @@ def test_sqrt_cuadrado_perfecto():
 
 
 # --- TU TURNO ---
-# Agregá tests para los siguientes casos:
-#   - Raíz de 0 (resultado: 0.0)
-#   - Raíz de un número que no es cuadrado perfecto (resultado decimal)
-#   - Raíz de un número negativo → debe lanzar ValueError
-#
-# Pista: para testear excepciones usá pytest.raises:
-#
-# def test_sqrt_negativo():
-#     with pytest.raises(ValueError):
-#         sqrt(-4)
+def test_sqrt_cero():
+    """Test: la raíz de 0 debe dar 0.0."""
+    assert sqrt(0) == 0.0
+
+
+def test_sqrt_no_cuadrado_perfecto():
+    """Test: la raíz de un número que no es cuadrado perfecto da resultado decimal."""
+    assert sqrt(2) == pytest.approx(1.414213562, rel=1e-6)
+
+
+def test_sqrt_negativo():
+    """Test: la raíz de un número negativo debe lanzar ValueError."""
+    with pytest.raises(ValueError):
+        sqrt(-4)
